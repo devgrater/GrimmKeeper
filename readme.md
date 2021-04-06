@@ -100,17 +100,17 @@ condition可以像上面一样，写比较句，例如
 然后在想要强制终止的地方直接```/jumpto End```即可
 
 
-执行了stop之后，不管剩下什么内容，一律不会执行。
+执行之后，不管剩下什么内容，一律不会执行。
 可能会用到的地方：
 
 ```
 [#choice](/jumpto choice0)(/jumpto choice1)
 @choice0
 Alice: you have landed in choice 0
-/stop
+/jumpto @End
 @choice1
 Alice: you have landed in choice 1
-/stop
+/jumpto @End
 ```
 
 跳到其中一个分支，Alice说话之后终止。
