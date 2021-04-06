@@ -122,3 +122,5 @@ Alice: you have landed in choice 1
 **随机变量**
 
 ```#random```
+
+暂定每一帧更新一次，变量为```Mathf.Random()```的值（0~1之间）
