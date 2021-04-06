@@ -116,6 +116,16 @@ Alice: you have landed in choice 1
 
 跳到其中一个分支，Alice说话之后终止。
 
+**玩家在看哪一个APP？**
+
+```
+#phone_homescreen
+#phone_meowwer
+#phone_meowgle
+```
+
+玩家打开哪个app，哪个的值就会变成1。其他的都会变为0。
+
 
 
 ## 还没做的
