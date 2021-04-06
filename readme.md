@@ -72,6 +72,12 @@ condition可以像上面一样，写比较句，例如
 载入指定位置的剧本，剧本的名称不需要包括扩展名，用相对于```/Resource/```的路径即可
 例如：```/load 2_get_to_meowwer```会载入```Resource```文件夹下的```2_get_to_meowwer.txt```
 
+**禁止玩家关闭手机**
+
+```/alwaysshowphone [true/false]```
+
+设置为```true```时，玩家不可关闭手机。设置后需要手动设置回```false```
+
 ## 你不一定知道的
 
 **修改角色表情**
