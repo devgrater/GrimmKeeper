@@ -118,3 +118,6 @@ Alice: you have landed in choice 1
 ```/fade [in/out] [time] [color]```
 
 用指定的颜色淡入淡出。```time```单位为秒。```color```为16进制颜色，不写默认为黑色
+
+**随机变量**
+#random
