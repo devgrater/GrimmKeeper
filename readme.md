@@ -24,7 +24,7 @@
 
 例如：```/await smartphone_1 == 1```。等```smartphone_1```的数值变为1时，停止等待，运行下一行的内容。
 
-其他的运算符号包括```> >= == <= < !=```
+其他的运算符号包括```> >= == <= < != 以及 "= (用于比较两个字符串变量)```
 
 **条件分支**
 
@@ -122,10 +122,6 @@ Alice: you have landed in choice 1
 #phone_app_opened -> 可能的值："meowwer", "meowgle", "homescreen"
 #phone_view_opened -> 可能的值：依app决定
 ```
-
-玩家打开哪个app，哪个的值就会变成1。其他的都会变为0。
-
-
 
 ## 还没做的
 
