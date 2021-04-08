@@ -119,9 +119,8 @@ Alice: you have landed in choice 1
 **玩家在看哪一个APP？**
 
 ```
-#phone_homescreen
-#phone_meowwer
-#phone_meowgle
+#phone_app_opened -> 可能的值："meowwer", "meowgle", "homescreen"
+#phone_view_opened -> 可能的值：依app决定
 ```
 
 玩家打开哪个app，哪个的值就会变成1。其他的都会变为0。
