@@ -143,6 +143,14 @@ Alice: you have landed in choice 1
 #phone_view_opened -> 可能的值：依app决定
 ```
 
+**玩家在看哪一个网页/推特？**
+
+```
+#phone_postview_uniqueid -> 可能的值：依推特决定，在推特里设置"uniquePostID"。没有时默认为空字符串
+#browser_webpage_uid -> 可能的值：依网页决定，在网页里设置"UniqueID"值即可。没有时默认为空字符串
+```
+
+
 ## 还没做的
 
 可以提前写在脚本里，不会影响运行。
