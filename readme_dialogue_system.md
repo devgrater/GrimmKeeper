@@ -33,7 +33,7 @@ Once you're done, edit `ScenarioManager.cs` and change the file path to the new 
 
 Run the project and see if everything gets displayed to the screen.
 
-[Stuck? Click Here](#41-solution-to-12)
+[Stuck? Click Here](#53-solution-to-12)
 
 ## 2. Adding Dialogues
 ### 2.1. The Basics
@@ -85,14 +85,14 @@ alice: hello
 alice: bye!
 ```
 
-To jump to a jump marker, write `/jump [Jump Marker Name]`
+To jump to a jump marker, write `/JumpTo [Jump Marker Name]`
 
 For example, look at this portion of code below.
 ```
 Alice: 1...
 Alice: 2...
 Alice: 3...
-/jumpto SkipFour
+/JumpTo SkipFour
 Alice: 4...
 
 @SkipFour
@@ -138,24 +138,24 @@ Though, both are written in the same way. We'll explain what that means in the n
 When a logical comparison is found, the line will be treated as an if block. Otherwise, it will be treated as a switch block.
 
 Look at this example:
-`[number_of_clicks >= 10](/jumpto ClicksGreaterThan10)(/jumpto ClicksLesserThan10)`
+`[number_of_clicks >= 10](/JumpTo ClicksGreaterThan10)(/JumpTo ClicksLesserThan10)`
 
-The first part `number_of_clicks >= 10` tells the system that this is an if block. When something is recognized as an if block, if the statement is evaluated to true, codes inside `Execution 1` will be executed, or, in this case, `/jumpto ClicksGreaterThan10`. If the statement is evaluated to false, `Execution 2` or `/jumpto ClicksLesserThan10` will be executed.
+The first part `number_of_clicks >= 10` tells the system that this is an if block. When something is recognized as an if block, if the statement is evaluated to true, codes inside `Execution 1` will be executed, or, in this case, `/JumpTo ClicksGreaterThan10`. If the statement is evaluated to false, `Execution 2` or `/JumpTo ClicksLesserThan10` will be executed.
 
 ##### 3.2.2.1. Switch Block
 As for the switch block, simply replace the logical comparison with an variable name. You cannot use a string inside a switch block - sad, but switching numbers somewhat fulfills the task sufficiently.
 
 Look at this example:
-`[number_of_clicks](/jumpto ClickedNone)(/jumpto ClickedOnce)(/jumpto ClickedTwice)`
+`[number_of_clicks](/JumpTo ClickedNone)(/JumpTo ClickedOnce)(/JumpTo ClickedTwice)`
 
-If `number_of_clicks` is equal to 0, the first block (`/jumpto ClickedNone`) is executed. if 1, the second and so on.
+If `number_of_clicks` is equal to 0, the first block (`/JumpTo ClickedNone`) is executed. if 1, the second and so on.
 
 
 Whether it's a switch block or an if block, if the block does not specify what to do when a specific condition is met, the code will simply continue execute the next line. If you have more specific use for switches, consider using multiple if statement instead:
 ```
-[number_of_clicks == 10](/jumpto TenthClick)
-[number_of_clicks == 8](/jumpto EighthClick)
-/jumpto EverythingElse
+[number_of_clicks == 10](/JumpTo TenthClick)
+[number_of_clicks == 8](/JumpTo EighthClick)
+/JumpTo EverythingElse
 
 @EverythingElse
 Alice: You didn't have enough clicks to even start with!
@@ -173,19 +173,25 @@ Simply put, using a jump statement to catch everything that falls out of the bas
 #### 3.2.3. Await Block
 
 Await block is almost the same as an if block - except that the execution is different. When you await for an condition, everything will be blocked until the condition has been fullfilled. You write the await block like this:
-`/await [Condition to Fulfill]`
+`/Await [Condition to Fulfill]`
 
 For example: 
 ```
 Alice: Click on the Block for 10 Times!
-/await number_of_clicks >= 10
+/Await number_of_clicks >= 10
 Alice: Well done!
 ```
 
 In this example, Alice will cue the player to click on the block for 10 times. Only when the block has been clicked 10 times, Alice will say "Well done!"
 
 ### 3.3. Setting a Variable
+You can set a variable in the following format:
+`/SetFlag [Flag Name] [Value / Flag Name]`
 
+For example, 
+`/SetFlag character_alpha 0.1` sets the flag `character_alpha` to 0.1
+
+Currently, you can only set float flags. String flags is something so unusual to use that it's probably not needed. If you have interest in adding the functionality, check [Adding, and Modifying Existing Code:](#4-adding-and-modifying-existing-code)
 
 ### 3.4. Presenting Choices to the Player
 To present a choice to the player, write in this format:
@@ -203,30 +209,62 @@ In combination with the switch block, you can let the player go to different bra
 
 ```
 ?(Nah it's fine)(Yes, absolutely.)
-[#choice](/jumpto ContinueWritePoopDocumentation)(/jumpto FixBadDocumentation)
+[#choice](/JumpTo ContinueWritePoopDocumentation)(/JumpTo FixBadDocumentation)
 ...
 ```
 
 In the example, `#choice` is a meta value. The value stores the last choice the player has made. First choice would be 0, second 1, etc.
-There are other meta values in the [appendix](#4-appendix). 
+There are other meta values in the [appendix](#5-appendix). 
 
 
+## 4. Adding, and Modifying Existing Sequence Functions:
+As you can see, some of the sequence lets you call a function using a forward slash `/[FunctionName]`. There's a lot more functions that you can use - if you want to check each one, check in [appendix](#5-appendix). 
+However, if you find a certain function not really doing its job, or wanting to add more functions - there's two place you want to check.
 
-## 4. All Existing Functions to Call, and Explanations
-### 4.1. Solution to §1.2.
+If a function is in the form `/Call [FunctionName]`, then the function is inside `Scripts/Manager/SequenceFuncManager.cs`. The functions inside here are probably only called once or twice, and are overly specific to be made into a something you can call with an argument. 
 
+If a function is in the form `/[FunctionName]`, these functions are inside `Scripts/DialogueSystem/TaskRunners/CommandTaskRunner.cs`. These functions are usually called multiple times over in the project, and can have arguments without getting overly specific.
 
-## 4. Adding, and Modifying Existing Code:
-### 4.1. Solution to §1.2.
+To add a new function, simply mimic how other functions do.
 
+## 5. Appendix:
+### 5.1. All Meta Values
 
-## 4. Appendix:
-### 4.1. All Meta Values
-`#choice`: Records the player's last choice.
+Meta values always start with a pound in front to indicate that they are different. 
 
+ - `#choice`: Records the player's last choice. First choice is 0, second is 1, etc.
+ - `#random`: a random float between 0.0 and 1.0. Polls every tick.
+ - `#phone_app_opened`: a string that returns which app is opened. The value depends on what apps are on the smartphone. Currently, it could be `meowwer`, `meowgle`, `settings`, `album`
+ - `#phone_view_opened`: this value is determined by each app. You can find their definitions under each app's settings. The apps can be found in the project hierarchy:
 
-
-### 4.1. Solution to §1.2.
+![App Piles](images/tutorial_apps.png)
+ - `#phone_postview_uniqueid`: this value specifies which meowt post is the user looking at. For specific settings, check the meowt section. When the view is not opened, this value should be empty.
+ - `#browser_webpage_uid`: similar to the previous one. This specifies which webpage is the user looking at. When the view is not opened, this value should be empty.
+ 
+### 5.2. All Existing Functions to Call
+ - `/JumpTo [JumpMarker]`: Jumps to an existing jump marker 
+ - `/SetFlag [Key] [Value]`: Assign `[Value]` to flag named `[Key]`. Only float values can be assigned currently.
+ - `/Call [FunctionName]`: Calls a function inside `SequenceFuncManager`. The functions here are overly specific or only used for once or twice.
+ - `/Await [Condition]`: Halts here, and when a condition is satisfied, continue executing the next line.
+ - `/ShowUI [true/false]`: Show, or hides the dialogue panel. When true, the dialogue panel is up, and only input on the panel is allowed. When false, the panel is retracted and players can interact with the surrounding.
+ - `/Load [File Path]`: Loads in a new scenario file. The path is relative to the `Resources/` folder.
+ - `/AlwaysShowPhone [true/false]`: whether the player can close their phone or not.
+ - `/SaveGame`: Writes the current game status into the save state. There's only one save state available.
+ - `/LoadGame`: Loads from the save state. Note that you can create an infinite loop using `/SaveGame` and `/LoadGame`. Try to not let that happen by only loading the game after the player confirms loading.
+ - `/Fade [front/back] [in/out] [Color(Optional)]`: Fades the screen in, or out using the color specified. Color takes a hex color code, or any color names, such as `#FFFFFF` or `black`. `Front` means that everything on the screen will be covered, while `back` means that the dialogue panel, the speaker's portrait will not be covered, but everything else will be covered.
+ - `/LoadScene [SceneName]`: Loads a new scene of the given scene name. The scene must be [added to Unity's build settings](https://docs.unity3d.com/Manual/BuildSettings.html)
+ - `/Cast [show/hide] [Cast Name] [Emote(Optional)]` Force show/hide a cast on screen. When the first argument is `show`, you can specify an emotion to show th cast in.
+ - `/SleepFor [Time]` Sleeps for a certain amount of time in seconds, then continue to execute the next line.
+ - `/BGM [FileName] [Volume] [Pitch]` Plays a piece of music in the background. You must add the audio resource to the AudioManager found under the scene hierarchy.
+ - `/SFX [FileName] [Volume] [Pitch]` Same as above, but does not loop. This is played specifically on a sound effect channel.
+ - `/IndexSearch [File Path]` Indexes a search result file in the project. Relative to the Resources folder.
+ - `/LoadMeowts [File Path] [Replace Original(Optional)]` Loads in a meowt file in the project. This will allow you to see new meowts in meowwer. Replace Original is defaulted to false. When set to false, it appends new meowts onto the existing meowt data. Otherwise, replaces the original.
+ - `/Timeline [Timeline Name]` Plays a specific timeline. Need to be registered with the Timeline Manager in the scene hierarchy. It should be Under "GeneralManager"
+ - `/SetNav [true/false]` Whether the player can navigate between pages. When set to false, players will not be able to hit return button, or click on links on the page - they don't do anything.
+ 
+ 
+ 
+### 5.3. Solution to §1.2.
 ```
 LoadTextAsset("Scripts/MyFirstScript");
 ```
@@ -248,7 +286,7 @@ If you are still stuck, check if files with the same name but different extensio
 ## 目前已经可以用的
 **跳到@开头的对应tag上**
 
-```/jumpto [tag]```
+```/JumpTo [tag]```
 
 **修改变量的值**
 
@@ -289,15 +327,15 @@ If you are still stuck, check if files with the same name but different extensio
 
 condition可以像上面一样，写比较句，例如
 
-```[smartphone_1 == 1](/jumpto success)(/jumpto failure)```
+```[smartphone_1 == 1](/JumpTo success)(/JumpTo failure)```
 
 也可以当做switch来使用，例如
 
-```[#choice](/jumpto choice0)(/jumpto choice1)(/jumpto choice2)```
+```[#choice](/JumpTo choice0)(/JumpTo choice1)(/JumpTo choice2)```
 
 此时，会根据#choice的值决定运行哪一段内容。```#choice```是保留变量，用来保存玩家上一次做出选择时的选项。选择第一个选项即为0，第二个为1，以此类推。
 
-有多个条件，但是分支数量不足时，例如```[#choice](/jumpto choice0)(/jumpto choice1)```但#choice为2，或```[smartphone_1 == 1](/jumpto success)```得出结果为false，此时会默认执行下一行内容。
+有多个条件，但是分支数量不足时，例如```[#choice](/JumpTo choice0)(/JumpTo choice1)```但#choice为2，或```[smartphone_1 == 1](/JumpTo success)```得出结果为false，此时会默认执行下一行内容。
 
 **给玩家提供选项**
 
@@ -313,7 +351,7 @@ condition可以像上面一样，写比较句，例如
 
 ```
 ?(Yes)(No)
-[#choice](/jumpto yes)(/jumpto no)
+[#choice](/JumpTo yes)(/JumpTo no)
 ```
 
 
@@ -369,20 +407,20 @@ condition可以像上面一样，写比较句，例如
 **终止对话**
 
 在文件末尾加上一个```@End```的标签
-然后在想要强制终止的地方直接```/jumpto End```即可
+然后在想要强制终止的地方直接```/JumpTo End```即可
 
 
 执行之后，不管剩下什么内容，一律不会执行。
 可能会用到的地方：
 
 ```
-[#choice](/jumpto choice0)(/jumpto choice1)
+[#choice](/JumpTo choice0)(/JumpTo choice1)
 @choice0
 Alice: you have landed in choice 0
-/jumpto @End
+/JumpTo @End
 @choice1
 Alice: you have landed in choice 1
-/jumpto @End
+/JumpTo @End
 ```
 
 跳到其中一个分支，Alice说话之后终止。
