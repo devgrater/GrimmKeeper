@@ -1,8 +1,32 @@
 # Dialogue System
 ## 0. Table of Contents
 
+- [Dialogue System](#dialogue-system)
+  * [0. Table of Contents](#0-table-of-contents)
+  * [1. Read as You Go: Setup](#1-read-as-you-go--setup)
+    + [1.1. Adding Files to the Directory: The Basics](#11-adding-files-to-the-directory--the-basics)
+    + [1.2. Adding Files to the Directory: Try It Yourself](#12-adding-files-to-the-directory--try-it-yourself)
+  * [2. Adding Dialogues](#2-adding-dialogues)
+    + [2.1. The Basics](#21-the-basics)
+    + [2.2. Adding Portraits](#22-adding-portraits)
+    + [2.3. Using Emotions](#23-using-emotions)
+  * [3. Flow Controls](#3-flow-controls)
+    + [3.1. Jump Markers](#31-jump-markers)
+    + [3.2. Logic Blocks](#32-logic-blocks)
+      - [3.2.1. Logical Comparison](#321-logical-comparison)
+      - [3.2.2. If/Switch Logic Block](#322-if-switch-logic-block)
+        * [3.2.2.1. If Block](#3221-if-block)
+        * [3.2.2.1. Switch Block](#3221-switch-block)
+      - [3.2.3. Await Block](#323-await-block)
+    + [3.3. Setting a Variable](#33-setting-a-variable)
+    + [3.4. Presenting Choices to the Player](#34-presenting-choices-to-the-player)
+  * [4. Adding, and Modifying Existing Sequence Functions:](#4-adding--and-modifying-existing-sequence-functions-)
+  * [5. Appendix:](#5-appendix-)
+    + [5.1. All Meta Values](#51-all-meta-values)
+    + [5.2. All Existing Functions to Call](#52-all-existing-functions-to-call)
+    + [5.3. Solution to §1.2.](#53-solution-to--12)
 
-
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## 1. Read as You Go: Setup
 ### 1.1. Adding Files to the Directory: The Basics
@@ -272,185 +296,3 @@ LoadTextAsset("Scripts/MyFirstScript");
 Remember, `LoadTextAsset()` looks for a path relative to the `Resources` folder. That being said, your path does not need to contain the `Resources` folder. File extension is not required by default.
 
 If you are still stuck, check if files with the same name but different extension is inside the folder.
-
-
-
-
-
-
-
-
-
-
-
-## 目前已经可以用的
-**跳到@开头的对应tag上**
-
-```/JumpTo [tag]```
-
-**修改变量的值**
-
-```/setflag [key] [value]```
-
-例如：```/setflag smartphone_1 1```
-会把名叫smartphone_1的变量设置为1。
-
-**调用项目里的函数**
-
-```/call [function name]```
-
-函数的内容目前还是需要我们负责。写的时候写个placeholder名字就行，到时候我们在代码这边接上
-
-**等待条件满足**
-
-```/await [condition]```
-
-条件满足后运行下一行。
-
-例如：```/await smartphone_1 == 1```。等```smartphone_1```的数值变为1时，停止等待，运行下一行的内容。
-
-其他的运算符号包括```> >= == <= < != 以及 "= (用于比较两个字符串变量)```
-
-关于字符串变量比较：
-
-带有引号的变量会被当做字符串。只要两个变量中有一个头和尾加上了引号，就会变成字符串之间的变量比较。
-
-例如：```#phone_app_opened == "hello"``` 会将字符串变量```#phone_app_opened```的值和字符串```hello```进行比较。
-
-想要比较两个字符串变量时，用```"=```作为比较符。
-
-字符串变量和数值变量保存在不同的字典里，未避免混淆，请勿建立同一名字的两个字符串和数值变量。
-
-**条件分支**
-
-```[[condition]](when success)(when failure)```
-
-condition可以像上面一样，写比较句，例如
-
-```[smartphone_1 == 1](/JumpTo success)(/JumpTo failure)```
-
-也可以当做switch来使用，例如
-
-```[#choice](/JumpTo choice0)(/JumpTo choice1)(/JumpTo choice2)```
-
-此时，会根据#choice的值决定运行哪一段内容。```#choice```是保留变量，用来保存玩家上一次做出选择时的选项。选择第一个选项即为0，第二个为1，以此类推。
-
-有多个条件，但是分支数量不足时，例如```[#choice](/JumpTo choice0)(/JumpTo choice1)```但#choice为2，或```[smartphone_1 == 1](/JumpTo success)```得出结果为false，此时会默认执行下一行内容。
-
-**给玩家提供选项**
-
-```?(Choice 1)(Choice 2)(Choice 3)....```
-
-会在屏幕上显示多个选项，选项内容为括号里面的内容。
-
-例如```?(Yes)(No)```
-
-玩家做出的选择会被保存在```#choice```这个保留关键字里。第一个选项为0，第二个为1，以此类推。
-
-一个常用的办法是将选项和分支结合
-
-```
-?(Yes)(No)
-[#choice](/JumpTo yes)(/JumpTo no)
-```
-
-
-**调整对话窗口的显示**
-
-```/showui [true/false]```
-
-**载入新文件**
-
-```/load [file]```
-
-
-载入指定位置的剧本，剧本的名称不需要包括扩展名，用相对于```/Resource/```的路径即可
-例如：```/load 2_get_to_meowwer```会载入```Resource```文件夹下的```2_get_to_meowwer.txt```
-
-**禁止玩家关闭手机**
-
-```/alwaysshowphone [true/false]```
-
-设置为```true```时，玩家不可关闭手机。设置后需要手动设置回```false```
-
-**存档/读档**
-
-```/savegame /loadgame```
-
-```/savegame```会将当前的状态保存下来，```/loadgame```会载入最后一次保存的存档。
-
-由于可能形成死循环，尽量将```loadgame```作为选择分支后的动作，只有玩家确认了才能载入。
-
-
-**淡入淡出**
-
-```/fade [front/back] [in/out] [color]```
-
-```front```指的是淡出的部分在对话框上方
-```back```指的是淡出的部分在对话框下方，手机上方。
-```color```为16进制颜色，不写默认为黑色
-
-**显示/隐藏对话框中的角色**
-
-```/cast [show/hide] [name]```
-例如```/cast show ryan```
-
-## 你不一定知道的
-
-**修改角色表情**
-
-```alice,happy: lorem ipsum```
-
-在角色名称后面加上逗号和表情，可以改变角色表情。
-当然，前提是有角色和相关表情的数据存在。
-
-**终止对话**
-
-在文件末尾加上一个```@End```的标签
-然后在想要强制终止的地方直接```/JumpTo End```即可
-
-
-执行之后，不管剩下什么内容，一律不会执行。
-可能会用到的地方：
-
-```
-[#choice](/JumpTo choice0)(/JumpTo choice1)
-@choice0
-Alice: you have landed in choice 0
-/JumpTo @End
-@choice1
-Alice: you have landed in choice 1
-/JumpTo @End
-```
-
-跳到其中一个分支，Alice说话之后终止。
-
-**玩家在看哪一个APP？**
-
-```
-#phone_app_opened -> 可能的值："meowwer", "meowgle", "homescreen"
-#phone_view_opened -> 可能的值：依app决定
-```
-
-**玩家在看哪一个网页/推特？**
-
-```
-#phone_postview_uniqueid -> 可能的值：依推特决定，在推特里设置"uniquePostID"。没有时默认为空字符串
-#browser_webpage_uid -> 可能的值：依网页决定，在网页里设置"UniqueID"值即可。没有时默认为空字符串
-```
-
-
-## 还没做的
-
-可以提前写在脚本里，不会影响运行。
-你用到了我就开始做相关的功能
-
-**屏幕抖动**
-
-```/shake [magnitude] [frequency]```
-
-**随机变量**
-
-```#random```
-
-暂定每一帧更新一次，变量为```Mathf.Random()```的值（0~1之间）
