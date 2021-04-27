@@ -208,7 +208,7 @@ In combination with the switch block, you can let the player go to different bra
 ```
 
 In the example, `#choice` is a meta value. The value stores the last choice the player has made. First choice would be 0, second 1, etc.
-There are other meta values in the [#4-appendix](appendix). 
+There are other meta values in the [appendix](#4-appendix). 
 
 
 
