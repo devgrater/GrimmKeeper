@@ -207,8 +207,8 @@ In combination with the switch block, you can let the player go to different bra
 ...
 ```
 
-In the example, `#choice` is a meta value. The value stores the last choice the player has made. 
-
+In the example, `#choice` is a meta value. The value stores the last choice the player has made. First choice would be 0, second 1, etc.
+There are other meta values in the [#4-appendix](appendix). 
 
 
 
@@ -221,6 +221,11 @@ In the example, `#choice` is a meta value. The value stores the last choice the 
 
 
 ## 4. Appendix:
+### 4.1. All Meta Values
+`#choice`: Records the player's last choice.
+
+
+
 ### 4.1. Solution to §1.2.
 ```
 LoadTextAsset("Scripts/MyFirstScript");
