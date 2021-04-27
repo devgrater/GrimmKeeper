@@ -16,7 +16,7 @@
       - [3.2.1. Logical Comparison](#321-logical-comparison)
       - [3.2.2. If/Switch Logic Block](#322-if-switch-logic-block)
         * [3.2.2.1. If Block](#3221-if-block)
-        * [3.2.2.1. Switch Block](#3221-switch-block)
+        * [3.2.2.2. Switch Block](#3222-switch-block)
       - [3.2.3. Await Block](#323-await-block)
     + [3.3. Setting a Variable](#33-setting-a-variable)
     + [3.4. Presenting Choices to the Player](#34-presenting-choices-to-the-player)
@@ -166,7 +166,7 @@ Look at this example:
 
 The first part `number_of_clicks >= 10` tells the system that this is an if block. When something is recognized as an if block, if the statement is evaluated to true, codes inside `Execution 1` will be executed, or, in this case, `/JumpTo ClicksGreaterThan10`. If the statement is evaluated to false, `Execution 2` or `/JumpTo ClicksLesserThan10` will be executed.
 
-##### 3.2.2.1. Switch Block
+##### 3.2.2.2. Switch Block
 As for the switch block, simply replace the logical comparison with an variable name. You cannot use a string inside a switch block - sad, but switching numbers somewhat fulfills the task sufficiently.
 
 Look at this example:
