@@ -1,5 +1,10 @@
 # Dialogue System
-## 1. Read as You Go:
+## 0. Table of Contents
+
+
+
+
+## 1. Read as You Go: Setup
 ### 1.1. Adding Files to the Directory: The Basics
 The project has a **initial file** that it will load on startup - though you can change that by editing the code found in `Scripts/Managers/ScenarioManager.cs`
 ```
@@ -14,7 +19,7 @@ protected override void Awake()
 
 Simply put, make sure to put all files you want to load this way under the `Resources` folder.
 
-### 1.2. Adding Files to the Directory: Practice
+### 1.2. Adding Files to the Directory: Try It Yourself
 
 Try create a txt file with the following content:
 ```
@@ -28,7 +33,7 @@ Once you're done, edit `ScenarioManager.cs` and change the file path to the new 
 
 Run the project and see if everything gets displayed to the screen.
 
-[Stuck? Click Here](#)
+[Stuck? Click Here](#41-solution-to-12)
 
 ## 2. Adding Dialogues
 ### 2.1. The Basics
@@ -69,7 +74,7 @@ To use a emotion, write this instead:
 
 For example, `Alice,sad: Ooof.` will display Alice in the sad face. Though, you will need to add the portrait in the speaker data first. If no corresponding emotions could be found, the base sprite will be used and no emotion will be displayed.
 
-## 3. Advanced Controls
+## 3. Flow Controls
 ### 3.1. Jump Markers
 Jump markers allow you to jump between dialogues, forward or backward. This comes especially handy when you have logic blocks, which we'll talk about in a bit.
 
@@ -95,6 +100,125 @@ Alice: And 5!
 ```
 
 As the name of the jump marker suggested, Alice will count up to 3, and skip 4. 
+
+### 3.2. Logic Blocks
+Two forms of logic block exists: the regular "if something do something / switch case" logic block, and the await logic block.
+But first, lets go over the basics of logical comparison.
+
+#### 3.2.1. Logical Comparison
+All values of the game are stored inside the GameStateManager. (src: `Scripts/Manager/GameStateManager.cs`),
+one of the table stores float variables, while the other stores string variables.
+You can compare them with other float or string value using the comparison operator.
+
+Here are your options
+ - **==**: Compares if value A equals to value B.
+ - **>, >=, <=, <**: Literal meaning. This only works if you are comparing a float against a float.
+ - **!=**: Compares if value A is not equal to value B
+ - **"=**: Compares two value as string. Useful when you are comparing two string variables.
+ 
+By default, the comparator will look up values in the float table.
+`value_alpha == 0.1 #looks up value in float table`
+
+If you want to compare variables in the string table, then one of the value has to be a string (by adding quotation marks before and after the string), or you should be using a string comparator.
+```
+your_name == "user" #because "user" is treated as a string, your_name is looked up in the string table.
+your_name "= his_name #uses the string comparator, so both values are looked up in the string table
+your_name == his_name #treated both as float because there's no way to tell whether it's a string or a float.
+```
+
+When the GameStateManager couldn't locate a value, the value will be defaulted to 0, or the empty string literal, based on the type of comparison. A warning will be raised but nothing bad will happen.
+
+#### 3.2.2. If/Switch Logic Block
+Both logic blocks are written in the same way, except that the If logic block requires a logical comparison while the switch block does not.
+
+Though, both are written in the same way. We'll explain what that means in the next part.
+`[[Logical Comparison / Variable]]([Execution 1])([Execution 2])(...)`
+
+##### 3.2.2.1. If Block
+When a logical comparison is found, the line will be treated as an if block. Otherwise, it will be treated as a switch block.
+
+Look at this example:
+`[number_of_clicks >= 10](/jumpto ClicksGreaterThan10)(/jumpto ClicksLesserThan10)`
+
+The first part `number_of_clicks >= 10` tells the system that this is an if block. When something is recognized as an if block, if the statement is evaluated to true, codes inside `Execution 1` will be executed, or, in this case, `/jumpto ClicksGreaterThan10`. If the statement is evaluated to false, `Execution 2` or `/jumpto ClicksLesserThan10` will be executed.
+
+##### 3.2.2.1. Switch Block
+As for the switch block, simply replace the logical comparison with an variable name. You cannot use a string inside a switch block - sad, but switching numbers somewhat fulfills the task sufficiently.
+
+Look at this example:
+`[number_of_clicks](/jumpto ClickedNone)(/jumpto ClickedOnce)(/jumpto ClickedTwice)`
+
+If `number_of_clicks` is equal to 0, the first block (`/jumpto ClickedNone`) is executed. if 1, the second and so on.
+
+
+Whether it's a switch block or an if block, if the block does not specify what to do when a specific condition is met, the code will simply continue execute the next line. If you have more specific use for switches, consider using multiple if statement instead:
+```
+[number_of_clicks == 10](/jumpto TenthClick)
+[number_of_clicks == 8](/jumpto EighthClick)
+/jumpto EverythingElse
+
+@EverythingElse
+Alice: You didn't have enough clicks to even start with!
+
+@EighthClick
+Alice: Well, i'll say that you... passed the test.
+
+@TenthClick
+Alice: Great! You clicked 10 times! That is a new record!
+```
+
+Simply put, using a jump statement to catch everything that falls out of the basket.
+
+
+#### 3.2.3. Await Block
+
+Await block is almost the same as an if block - except that the execution is different. When you await for an condition, everything will be blocked until the condition has been fullfilled. You write the await block like this:
+`/await [Condition to Fulfill]`
+
+For example: 
+```
+Alice: Click on the Block for 10 Times!
+/await number_of_clicks >= 10
+Alice: Well done!
+```
+
+In this example, Alice will cue the player to click on the block for 10 times. Only when the block has been clicked 10 times, Alice will say "Well done!"
+
+### 3.3. Setting a Variable
+
+
+### 3.4. Presenting Choices to the Player
+To present a choice to the player, write in this format:
+`?([Choice 1])([Choice 2])([Choice 3])...`
+
+For example:
+```
+Alice: This is a terrible documentation!
+?(Nah it's fine)(Yes, absolutely.)
+```
+
+The choices will pop up after Alice says "This is a terrible documentation!", one saying "Nah it's fine", the other saying "Yes, absolutely.". Players will have to pick an option before going any further.
+
+In combination with the switch block, you can let the player go to different branches after picking a choice.
+
+```
+?(Nah it's fine)(Yes, absolutely.)
+[#choice](/jumpto ContinueWritePoopDocumentation)(/jumpto FixBadDocumentation)
+...
+```
+
+In the example, `#choice` is a meta value. The value stores the last choice the player has made. 
+
+
+
+
+## 4. All Existing Functions to Call, and Explanations
+### 4.1. Solution to §1.2.
+
+
+## 4. Adding, and Modifying Existing Code:
+### 4.1. Solution to §1.2.
+
 
 ## 4. Appendix:
 ### 4.1. Solution to §1.2.
