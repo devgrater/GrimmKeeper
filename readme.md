@@ -1,7 +1,7 @@
 # GrimmKeeper
 ## 1. Components
 ### [Dialogue System](readme_dialogue_system.md)
-The core component of the project. You'll learn to write dialogue scripts, and understand how things works.
+The core component of the project. You'll learn to write dialogue scripts, and use simple commands to achieve what you need.
 
 ### [Search System](readme_search_system.md)
 You'll learn to understand the structures of the search index files, and how to make or add webpages.
