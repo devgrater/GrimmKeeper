@@ -1,6 +1,20 @@
 # Web System
 ## 0. Table of Contents
 
+- [Web System](#web-system)
+  * [0. Table of Contents](#0-table-of-contents)
+  * [1. Strucutre of a Search Index File](#1-strucutre-of-a-search-index-file)
+    + [1.1. Keyword Marker](#11-keyword-marker)
+    + [1.2. Indexing Files](#12-indexing-files)
+    + [1.3. Matches Marker](#13-matches-marker)
+    + [1.4. Loading an Index File](#14-loading-an-index-file)
+  * [2. Adding a Webpage](#2-adding-a-webpage)
+    + [2.1. Webpage Prefab](#21-webpage-prefab)
+    + [2.2. Cover Image](#22-cover-image)
+    + [2.3. SearchResult.txt](#23-searchresulttxt)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## 1. Strucutre of a Search Index File
 Similar to the dialogue files, the search system file needs to be placed inside the `Resources` folder.
 The structure also works similar to the dialogue files.
