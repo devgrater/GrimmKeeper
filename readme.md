@@ -6,7 +6,7 @@ The core component of the project. You'll learn to write dialogue scripts, and u
 ### [Web System](readme_search_system.md)
 You'll learn to understand the structures of the search index files, and how to make or add webpages.
 
-### [Meowt System](readme_dialogue_system.md)
+### [Meowt System](readme_meowt_system.md)
 You'll learn how to add social media content to the game, mainly meowts on Meowwer.
 
 ### [Smartphone System](readme_dialogue_system.md)
