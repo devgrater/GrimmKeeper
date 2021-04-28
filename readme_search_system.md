@@ -1,7 +1,7 @@
 # Web System
 ## 0. Table of Contents
 
-## 1. Strucutre of a Search File
+## 1. Strucutre of a Search Index File
 Similar to the dialogue files, the search system file needs to be placed inside the `Resources` folder.
 The structure also works similar to the dialogue files.
 
@@ -44,7 +44,10 @@ Anything starts with a `#` and a number after it is a matches marker. For exampl
 It will apply to any search results after the line and before the next `@` or `#` mark.
 
 ### 1.4. Loading an Index File
+Simply call the sequence function `/IndexSearch [Path to Index]`
+Or, do it the hard way and call the function `SearchManager.Instance.LoadIndex(path)`
 
+The function by default replaces all existing search indexes, instead of appending to them.
 
 
 ## 2. Adding a Webpage

@@ -281,7 +281,7 @@ Meta values always start with a pound in front to indicate that they are differe
  - `/SleepFor [Time]` Sleeps for a certain amount of time in seconds, then continue to execute the next line.
  - `/BGM [FileName] [Volume] [Pitch]` Plays a piece of music in the background. You must add the audio resource to the AudioManager found under the scene hierarchy.
  - `/SFX [FileName] [Volume] [Pitch]` Same as above, but does not loop. This is played specifically on a sound effect channel.
- - `/IndexSearch [File Path]` Indexes a search result file in the project. Relative to the Resources folder.
+ - `/IndexSearch [File Path]` Indexes a [search result file](readme_search_system.md#14-loading-an-index-file) in the project. Relative to the Resources folder.
  - `/LoadMeowts [File Path] [Replace Original(Optional)]` Loads in a meowt file in the project. This will allow you to see new meowts in meowwer. Replace Original is defaulted to false. When set to false, it appends new meowts onto the existing meowt data. Otherwise, replaces the original.
  - `/Timeline [Timeline Name]` Plays a specific timeline. Need to be registered with the Timeline Manager in the scene hierarchy. It should be Under "GeneralManager"
  - `/SetNav [true/false]` Whether the player can navigate between pages. When set to false, players will not be able to hit return button, or click on links on the page - they don't do anything.
