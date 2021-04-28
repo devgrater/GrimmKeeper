@@ -20,8 +20,8 @@
       - [3.2.3. Await Block](#323-await-block)
     + [3.3. Setting a Variable](#33-setting-a-variable)
     + [3.4. Presenting Choices to the Player](#34-presenting-choices-to-the-player)
-  * [4. Adding, and Modifying Existing Sequence Functions:](#4-adding--and-modifying-existing-sequence-functions-)
-  * [5. Appendix:](#5-appendix-)
+  * [4. Adding, and Modifying Existing Sequence Functions](#4-adding--and-modifying-existing-sequence-functions)
+  * [5. Appendix](#5-appendix)
     + [5.1. All Meta Values](#51-all-meta-values)
     + [5.2. All Existing Functions to Call](#52-all-existing-functions-to-call)
     + [5.3. Solution to §1.2.](#53-solution-to--12)
@@ -215,7 +215,7 @@ You can set a variable in the following format:
 For example, 
 `/SetFlag character_alpha 0.1` sets the flag `character_alpha` to 0.1
 
-Currently, you can only set float flags. String flags is something so unusual to use that it's probably not needed. If you have interest in adding the functionality, check [Adding, and Modifying Existing Code:](#4-adding-and-modifying-existing-code)
+Currently, you can only set float flags. String flags is something so unusual to use that it's probably not needed. If you have interest in adding the functionality, check [Adding, and Modifying Existing Sequence Functions](#4-adding-and-modifying-existing-sequence-functions)
 
 ### 3.4. Presenting Choices to the Player
 To present a choice to the player, write in this format:
@@ -241,7 +241,7 @@ In the example, `#choice` is a meta value. The value stores the last choice the 
 There are other meta values in the [appendix](#5-appendix). 
 
 
-## 4. Adding, and Modifying Existing Sequence Functions:
+## 4. Adding, and Modifying Existing Sequence Functions
 As you can see, some of the sequence lets you call a function using a forward slash `/[FunctionName]`. There's a lot more functions that you can use - if you want to check each one, check in [appendix](#5-appendix). 
 However, if you find a certain function not really doing its job, or wanting to add more functions - there's two place you want to check.
 
@@ -251,7 +251,7 @@ If a function is in the form `/[FunctionName]`, these functions are inside `Scri
 
 To add a new function, simply mimic how other functions do.
 
-## 5. Appendix:
+## 5. Appendix
 ### 5.1. All Meta Values
 
 Meta values always start with a pound in front to indicate that they are different. 
