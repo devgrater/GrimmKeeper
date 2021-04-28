@@ -20,7 +20,7 @@
       - [3.2.3. Await Block](#323-await-block)
     + [3.3. Setting a Variable](#33-setting-a-variable)
     + [3.4. Presenting Choices to the Player](#34-presenting-choices-to-the-player)
-  * [4. Adding, and Modifying Existing Sequence Functions](#4-adding--and-modifying-existing-sequence-functions)
+  * [4. Adding, and Modifying Existing Sequence Functions](#4-adding-and-modifying-existing-sequence-functions)
   * [5. Appendix](#5-appendix)
     + [5.1. All Meta Values](#51-all-meta-values)
     + [5.2. All Existing Functions to Call](#52-all-existing-functions-to-call)
