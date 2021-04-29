@@ -23,8 +23,18 @@ Creating and Adding Apps in General.
  - How to Create a AppView
  - How to Open Another App from a Different App
 
-### [The Managers](readme_dialogue_system.md)
+### [The Managers](readme_managers.md)
 You'll learn what/how each manager does its thing.
+ - SmartphoneManager
+ - MeowwerManager
+ - SearchManager
+ - ScenarioManager
+ - UIManager
+ - UIMaskManager
+ - SequenceFuncManager
+ - GameDataManager
+ - AudioManager
+ - TimelineManager
 
 ### [Putting Everything Together](readme_dialogue_system.md)
 You'll learn how to connect everything together, and how to build the project

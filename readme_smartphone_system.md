@@ -12,6 +12,7 @@
   * [2. Starting Another View](#2-starting-another-view)
     + [2.1. Starting a View in the Same App](#21-starting-a-view-in-the-same-app)
     + [2.2. Starting a View in Another App](#22-starting-a-view-in-another-app)
+    + [2.3. Passing Data](#23-passing-data)
   * [3. Appendix](#3-appendix)
     + [3.1. Assign the Object to Action On Click?](#31-assign-the-object-to-action-on-click-)
 
@@ -110,6 +111,10 @@ If you want to start another view that's inside another app, such as starting Me
  - `appName`: the string you assigned to the `Installed Apps` field under Smartphone's SmartphoneManager
  - `appID`: the string that you assigned to the corresponding App's `App Views` field.
  - `startFresh`: If set to true, all views before the new view will be removed from the queue. In other words, once you click return from this view, it will show homescreen directly because no view before it exists. Usually this should be set to `false` because of that.
+
+### 2.3. Passing Data
+Most of the times, the app you started won't know what to do next.
+Therefore, you need to create a data that they can understand, and use `baseApp.PassData(ViewData data)` or `SmartphoneManager.Instance.PassData(ViewData data)` to tell the newly started app what to do next.
 
 
 
