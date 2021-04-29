@@ -109,4 +109,10 @@ To add in a new Meowt User, go to the project directory and right click. Choose 
  - Username: The display name of the user.
  - Userid: The user id that starts with a "@" mark, like the one you see on twitter.
  - Profile Pic: A profile image. The Texture Type of the image should be in Sprite
+ 
 ![Sprite](images/tutorial_webpage_3.png)
+
+Once you created a meowt user, assign it to the MeowtManager in the scene. It should be under SmartphoneManager by default.
+
+
+![Sprite](images/tutorial_meowwer_3.png)
