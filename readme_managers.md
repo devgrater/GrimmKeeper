@@ -38,3 +38,22 @@ SearchManager is responsible for:
  - `SearchFromTextbox(TMP_InputField textInput)`: Does the same as above, but takes a [TextMeshPro](https://learn.unity.com/tutorial/working-with-textmesh-pro) InputField as an argument. Searches with string entered in the InputField.
 
 ## 4. ScenarioManager
+ScenarioManager is responsible for:
+ - Loading another dialogue script and running it
+ - For more detail on the dialogue system, [check here](readme_dialogue_system.md)
+
+### 4.1. Handy Functions in ScenarioManager
+ - `LoadTextAsset(string path)`: reads a dialogue script in the given `path`, relative to the `Resources` folder, and display it on screen.
+
+## 5. UIManager
+UIManager is responsible for:
+ - Displaying characters and text on screen
+ - Handling choices that the player made
+ - For more detail on the dialogue system, [check here](readme_dialogue_system.md)
+
+## 6. UIMaskManager
+UIMaskManager is responsible for:
+ - Displaying a mask to cue the player to click into something
+ - When a mask is active, players can only click on the item that the mask focuses on.
+### 6.1. Handy Functions in ScenarioManager
+ - `MaskTo(RectTransform transform, bool silentMask = false)`: Chooses a `RectTransform` and shows a semi transparent mask to it.  Everything else on the scene will be dimmed and become un-clickable. If `transform` is set to `null`, then nothing will be masked and everything will be clickable. If `silentMask` is set to true, then nothing will be dimmed, but only the masked object will be clickable.
