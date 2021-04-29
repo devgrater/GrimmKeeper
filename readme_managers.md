@@ -32,4 +32,9 @@ SearchManager is responsible for:
  - Executing a Search Based on the Given Keywords
  - For more detail on search indexes and adding webpages, [check here](readme_search_system.md)
 
-### 3.1.
+### 3.1. Handy Functions in SearchManager
+ - `ExtractWebpageContent(string path)`: From the given path to a `SearchResult.txt`, retreive a dictionary of strings that uses anything before the colon as key, and anything after the colon as value.
+ - `SearchFor(string searchString)`: Break `searchString` down into words, and search each word separatly for results. Then, returns a list of `QueryResult`: a `string searchResult` with the corresponding webpage name, and an `int searchHeuristic` with how many matches of keywords does this search result has. The list is sorted in order of higher `searchHeuristic` to lower.
+ - `SearchFromTextbox(TMP_InputField textInput)`: Does the same as above, but takes a [TextMeshPro](https://learn.unity.com/tutorial/working-with-textmesh-pro) InputField as an argument. Searches with string entered in the InputField.
+
+## 4. ScenarioManager
