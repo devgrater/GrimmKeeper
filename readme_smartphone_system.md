@@ -1,5 +1,21 @@
 # Web System
 ## 0. Table of Contents
+- [Web System](#web-system)
+  * [0. Table of Contents](#0-table-of-contents)
+  * [1. Creating a New App](#1-creating-a-new-app)
+    + [1.1. Creating a Base App](#11-creating-a-base-app)
+    + [1.2. Launching the App You Created in Homescreen](#12-launching-the-app-you-created-in-homescreen)
+    + [1.3. Creating an App View (Programming Required)](#13-creating-an-app-view--programming-required-)
+      - [1.3.1. AppView](#131-appview)
+      - [1.3.2. ViewData](#132-viewdata)
+      - [1.3.3. Assigning the View](#133-assigning-the-view)
+  * [2. Starting Another View](#2-starting-another-view)
+    + [2.1. Starting a View in the Same App](#21-starting-a-view-in-the-same-app)
+    + [2.2. Starting a View in Another App](#22-starting-a-view-in-another-app)
+  * [3. Appendix](#3-appendix)
+    + [3.1. Assign the Object to Action On Click?](#31-assign-the-object-to-action-on-click-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## 1. Creating a New App
 All apps are stored inside the Smartphone prefab, under the main viewport.
