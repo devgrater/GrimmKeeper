@@ -9,11 +9,13 @@
   * [4. Meowt System](readme_meowt_system.md)
   * [5. Smartphone System](readme_smartphone_system.md)
   * [6. The Managers](readme_managers.md)
-  * [7. Putting Everything Together](readme_assembly.md)
+  * [7. Putting Everything Together](readme_assemble.md)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## 1. Overview
+This readme document will guide you from setting up the dialogue system to understanding how each of the components work in the project.
+
 
 ## [2. Dialogue System](readme_dialogue_system.md)
 The core component of the project. Includes:
