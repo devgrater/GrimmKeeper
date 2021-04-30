@@ -1,6 +1,39 @@
 # The Managers
 ## 0. Table of Contents
 
+- [The Managers](#the-managers)
+  * [0. Table of Contents](#0-table-of-contents)
+  * [1. SmartphoneManager](#1-smartphonemanager)
+    + [1.1. Relationship to Dialogue Script](#11-relationship-to-dialogue-script)
+    + [1.2. Handy Functions in SmartphoneManager](#12-handy-functions-in-smartphonemanager)
+  * [2. MeowwerManager](#2-meowwermanager)
+    + [2.1. Relationship to Dialogue Script](#21-relationship-to-dialogue-script)
+    + [2.2. Handy Functions in MeowwerManager](#22-handy-functions-in-meowwermanager)
+  * [3. SearchManager](#3-searchmanager)
+    + [3.1. Relationship to Dialogue Script](#31-relationship-to-dialogue-script)
+    + [3.2. Handy Functions in SearchManager](#32-handy-functions-in-searchmanager)
+  * [4. ScenarioManager](#4-scenariomanager)
+    + [4.1. Relationship to Dialogue Script](#41-relationship-to-dialogue-script)
+    + [4.2. Handy Functions in ScenarioManager](#42-handy-functions-in-scenariomanager)
+  * [5. UIManager](#5-uimanager)
+    + [5.1. Relationship to Dialogue Script](#51-relationship-to-dialogue-script)
+  * [6. UIMaskManager](#6-uimaskmanager)
+    + [6.1. Handy Functions in ScenarioManager](#61-handy-functions-in-scenariomanager)
+  * [7. SequenceFuncManager](#7-sequencefuncmanager)
+    + [7.1. Relationship to Dialogue Script](#71-relationship-to-dialogue-script)
+    + [7.2. Handy Functions in SequenceFuncManager](#72-handy-functions-in-sequencefuncmanager)
+  * [8. GameDataManager](#8-gamedatamanager)
+    + [8.1. Relationship to Dialogue Script](#81-relationship-to-dialogue-script)
+    + [8.2.  Handy Functions in GameDataManager](#82--handy-functions-in-gamedatamanager)
+  * [9. AudioManager](#9-audiomanager)
+    + [9.1. Relationship to Dialogue Script](#91-relationship-to-dialogue-script)
+    + [9.2.  Handy Functions in GameDataManager](#92--handy-functions-in-gamedatamanager)
+  * [10.0. TimelineManager](#100-timelinemanager)
+    + [10.1. Relationship to Dialogue Script](#101-relationship-to-dialogue-script)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 ## 1. SmartphoneManager
 SmartphoneManager is responsible for:
  - Controlling the visibility of the Smartphone

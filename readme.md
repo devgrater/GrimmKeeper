@@ -37,4 +37,7 @@ You'll learn what/how each manager does its thing.
  - TimelineManager
 
 ### [Putting Everything Together](readme_dialogue_system.md)
-You'll learn how to connect everything together, and how to build the project
+You'll learn how to connect everything together.
+ - Creating new Scenes
+ - Build settings
+ - Building the Project
