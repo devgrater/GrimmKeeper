@@ -1,6 +1,17 @@
 # GrimmKeeper
-
 ## 0. Table of Contents
+
+- [GrimmKeeper](#grimmkeeper)
+  * [0. Table of Contents](#0-table-of-contents)
+  * [1. Overview](#1-overview)
+  * [[2. Dialogue System](readme_dialogue_system.md)](#-2-dialogue-system--readme-dialogue-systemmd-)
+  * [[3. Web System](readme_search_system.md)](#-3-web-system--readme-search-systemmd-)
+  * [[4. Meowt System](readme_meowt_system.md)](#-4-meowt-system--readme-meowt-systemmd-)
+  * [[5. Smartphone System](readme_smartphone_system.md)](#-5-smartphone-system--readme-smartphone-systemmd-)
+  * [[6. The Managers](readme_managers.md)](#-6-the-managers--readme-managersmd-)
+  * [[7. Putting Everything Together](readme_assembly.md)](#-7-putting-everything-together--readme-assemblymd-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## 1. Overview
 
@@ -40,7 +51,7 @@ You'll learn what/how each manager does its thing.
  - AudioManager
  - TimelineManager
 
-## [7. Putting Everything Together](readme_dialogue_system.md)
+## [7. Putting Everything Together](readme_assemble.md)
 You'll learn how to connect everything together.
  - Creating new Scenes
  - Build settings
