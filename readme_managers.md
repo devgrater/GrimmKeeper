@@ -28,8 +28,18 @@
   * [9. AudioManager](#9-audiomanager)
     + [9.1. Relationship to Dialogue Script](#91-relationship-to-dialogue-script)
     + [9.2.  Handy Functions in GameDataManager](#92--handy-functions-in-gamedatamanager)
-  * [10.0. TimelineManager](#100-timelinemanager)
+  * [10. TimelineManager](#100-timelinemanager)
     + [10.1. Relationship to Dialogue Script](#101-relationship-to-dialogue-script)
+  * [11. EndingManager](#11-endingmanager)
+    + [11.1. Relationship to Dialogue Script](#111-relationship-to-dialogue-script)
+    + [11.2. Handy Functions in EndingManager](#112-handy-functions-in-endingmanager)
+  * [12. HallwayManager](#12-hallwaymanager)
+    + [12.1. Relationship to Dialogue Script](#121-relationship-to-dialogue-script)
+    + [12.2. Handy Functions in HallwayManager](#122-handy-functions-in-hallwaymanager)
+  * [13. SuspectIssueManager](#13-suspectissuemanager)
+    + [13.1. Relationship to Dialogue Script](#131-relationship-to-dialogue-script)
+    + [13.2. Handy Functions in SuspectIssueManager](#132-handy-functions-in-suspectissuemanager)
+    + [13.3 Other things you need to know in SuspectIssueManager](#133-other-things-you-need-to-know-in-suspectissuemanager)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -153,7 +163,7 @@ AudioManager is responsible for:
 
 ![Audio Tutorial](images/tutorial_audio.png)
 
-## 10.0. TimelineManager
+## 10. TimelineManager
 TimelineManager is responsible for:
  - Playing a timeline.
  - Though, this manager is used rarely currently.
@@ -163,3 +173,40 @@ TimelineManager is responsible for:
  - Requires assigning the timeline to this manager first, similar to assigning audios to the audio manager.
 
 ![Timeline Tutorial](images/tutorial_timeline.png)
+
+## 11. EndingManager
+EndingManager is responsible for:
+ - Handle what happens when each chapter ends.
+
+### 11.1. Relationship to Dialogue Script
+ - Calling `/call Ch1BookmarkYes`, `/call Ch2BookmarkYes`, `/call Ch3BookmarkYes` in dialogue scripts invokes the function that handles the ending for each chapter accordingly. Those functions would record the player's choice of the webpage.
+
+### 11.2. Handy Functions in EndingManager
+ - `GetWebpageName()` returns the prefab name of the webpage that is currently loaded in the phone browser. (I know this is a strange place to have this function)
+ 
+## 12. HallwayManager
+HallwayManager is responsible for:
+ - Defines some behaviour of the game objects in the hallway.
+
+### 12.1. Relationship to Dialogue Script
+ - Calling `/call HideAlice`, `/call ShowAlice` in dialogue scripts would make Alice disapear or appear in the hallway.
+
+### 12.2. Handy Functions in HallwayManager
+ - `SetBubble(string, bool)` works with the script `BubbleCheckmark` to control the talking bubble animation of the characters in the hallway.
+ 
+## 13. SuspectIssueManager
+HallwayManager is responsible for:
+ - Dealing with the content show in the mind list.
+
+### 13.1. Relationship to Dialogue Script
+ - Calling `/suspectissue tag` in dialogue scripts will send the tag to SuspectIssueManager, and the content in the mind list would change accordingly.
+ 
+### 13.2. Handy Functions in SuspectIssueManager
+ - `SetIssue(string)` will add the new suspect issue tag into the content.
+ - `SetMindText(string)` really does the content changing job.
+ - `onClickIcon()` and `onNotebookClose()` control the open and close of the mind list.
+ 
+### 13.3 Other things you need to know in SuspectIssueManager
+ - SuspectIssueManager is attached on the TestCanvas, and it works with script `SuspectIssue`.
+ - There are two main components in the mind list, one is the text, and the other one is the key words images. The texts are stored in the array mind_text, and the images are stored in the array KeyWords.
+ - When a tag is passed to `SetIssue(string)`, we first check if that is a new tag which never shows before, if so, we pass it to `SetMindText(string)` and change the content accordingly.
