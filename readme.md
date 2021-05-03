@@ -14,7 +14,7 @@
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## 1. Overview
-This readme document will walk you through with GrimmReaper, the custom made dialogue engine embeddede in the project. We'll be guiding you from setting up the dialogue system to understanding how each of the components work in the project, and finally building the projects.
+This readme document will walk you through with GrimmKeeper, the custom made dialogue engine embeddede in the project. We'll be guiding you from setting up the dialogue system to understanding how each of the components work in the project, and finally building the projects.
 
 
 ## [2. Dialogue System](readme_dialogue_system.md)
