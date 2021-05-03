@@ -74,7 +74,13 @@ In the folder, you'll need a few files to populate it. The ones that are marked 
 ### 2.1. Webpage Prefab
 ![Webpage Structure](images/tutorial_webpage_1.png)
 
-The prefab should have the same as it's folder's name. In this example, both are `3-3`. When a webpage is loaded, this prefab will be displayed.
+IMPORTANT: The prefab should must have the same name as it's folder's. In this example, both are `3-3`. When a webpage is loaded, this prefab will be displayed.
+
+You will want to use the prefab WebImage and WebText to construct the webpage prefab. These two prefabs integregate the function of mouse hovering and clicking.
+
+IMPORTANT: The name of txt files in the webpage prefab folder must be the same as the objects in the webpage prefab, this is how the dialogue locate the scripts.
+
+If a part is a suspect issue, there are two ways to add it. First is to add script `SuspectIssue` to the object and set the flag, then bind the `SuspectIssue.onIssueClicked()` to the Action On Click in script `UIClickable`. Another way is to call `/suspectissue tag` in the txt scripts for that object.
 
 When you put them in the search index, write `3-3` is sufficient enough for the web system to locate it.
 
