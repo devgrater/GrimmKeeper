@@ -119,8 +119,8 @@ UniqueID: harvard-research
  - Load-Format: Not used currently. Remove or ignore should be fine. This is just kept here to clear the confusion.
  - Title: The webpage title that will be displayed when the player sees it on Meowgle or Meowwer.
  - Description: A trimmed version of the first paragraph. This will be displayed when the player search on Meowgle, but never shown on Meowwer.
- - PFBName(Optional): Name of the prefab. Keep it the same as the folder's name.
- - ShowHeader: When set to true, this file will display the header with the "Share" button. If not included in the file, defaults to false.
+ - PFBName: Name of the prefab. Keep it the same as the folder's name.
+ - ShowHeader(Optional): When set to true, this file will display the header with the "Share" button. If not included in the file, defaults to false.
  - UniqueID(Optional): When a player opens this page, the [meta value](readme_dialogue_system.md#51-all-meta-values) `#browser_webpage_uid` will be set to this string. If not included in the file, defaults to the empty string literal.
 
 
